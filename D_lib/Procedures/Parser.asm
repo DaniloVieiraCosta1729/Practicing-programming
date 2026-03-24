@@ -32,6 +32,7 @@ string2integer:
 ; integer2string(rdi, rsi, rdx) -> integer2string(buffer address, number, buffer size)
 ; (IGNORE THIS LINE FOR NOW, please) return in rax -> 0 if everything worked fine and -1 if something broke. 
 ; return in rax -> the address of the resulting string.
+; actual string size in r9
 integer2string:
     push rcx
     push rbx
@@ -40,6 +41,7 @@ integer2string:
     mov rax, rsi
     mov rbx, 10
     mov r8, rdx
+    xor r9, r9
 
     ; REMENBER -> implement LOG10(x) to improve this function.
     .loop01:
@@ -47,6 +49,7 @@ integer2string:
         idiv rbx
         add dl, cl
         mov byte [rdi + r8], dl
+        inc r9
         cmp r8, 0
         je .end
         cmp rax, 0
