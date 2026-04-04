@@ -123,7 +123,7 @@ int permutations(int arr[], size_t size)
         After thinking a lot (it's quite embarrassing to think that hard to reach this), I find out that if I chose the place to apply the swap based on the fact stated above, the problem is solved.
     */
 
-    Generator * permutations = malloc(sizeof(Generator));
+    Generator * permutations = {0};
     permutations->end = factorial(size);
     permutations->state = 1;
 
